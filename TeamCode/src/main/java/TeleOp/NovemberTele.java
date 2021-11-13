@@ -32,7 +32,7 @@ public class NovemberTele extends LinearOpMode{
         waitForStart();
 
         while (opModeIsActive()) {
-            MecanumDrive.move(gamepad1.left_stick_x, gamepad1.left_stick_y);
+            MecanumDrive.move(gamepad1.left_stick_x, -gamepad1.left_stick_y);
         }
     }
 }
@@ -71,6 +71,4 @@ class MecanumDrive {
     public void rotate(double r) {
 
     }
-
-
 }
