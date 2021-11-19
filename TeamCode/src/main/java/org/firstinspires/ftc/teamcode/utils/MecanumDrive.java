@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.utils;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import java.util.HashMap;
@@ -26,6 +27,11 @@ public class MecanumDrive {
         directions.put(fr, new double[]{-1, 1});
         directions.put(bl, new double[]{-1, 1});
         directions.put(fl, new double[]{1, 1});
+
+        fl.setDirection(DcMotorSimple.Direction.FORWARD);
+        bl.setDirection(DcMotorSimple.Direction.FORWARD);
+        fr.setDirection(DcMotorSimple.Direction.REVERSE);
+        br.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     public static void move(double x, double y) {

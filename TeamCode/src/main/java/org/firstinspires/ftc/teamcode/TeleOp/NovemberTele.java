@@ -23,16 +23,6 @@ public class NovemberTele extends LinearOpMode{
         MecanumDrive.init();
         MecanumDrive mecanumDrive = new MecanumDrive(hardwareMap);
 
-        DcMotor fl = hardwareMap.dcMotor.get("fl");
-        DcMotor fr = hardwareMap.dcMotor.get("fr");
-        DcMotor bl = hardwareMap.dcMotor.get("bl");
-        DcMotor br = hardwareMap.dcMotor.get("br");
-
-        fl.setDirection(DcMotorSimple.Direction.FORWARD);
-        bl.setDirection(DcMotorSimple.Direction.FORWARD);
-        fr.setDirection(DcMotorSimple.Direction.REVERSE);
-        br.setDirection(DcMotorSimple.Direction.REVERSE);
-
         waitForStart();
 
         while (opModeIsActive()) {
