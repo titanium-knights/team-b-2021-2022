@@ -19,7 +19,7 @@ public class MecanumDrive {
 
     public static DcMotor fl, fr, bl, br;
 
-    public static HashMap<DcMotor, double[]> directions;
+    public static HashMap<DcMotor, double[]> directions = new HashMap<>();
 
     public static void init() {
         // Direction Vectors
@@ -28,23 +28,25 @@ public class MecanumDrive {
         directions.put(bl, new double[]{-1, 1});
         directions.put(fl, new double[]{1, 1});
 
-        fl.setDirection(DcMotorSimple.Direction.FORWARD);
+        fl.setDirection(DcMotorSimple.Direction.REVERSE);
         bl.setDirection(DcMotorSimple.Direction.FORWARD);
         fr.setDirection(DcMotorSimple.Direction.REVERSE);
         br.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
-    public static void move(double x, double y) {
+    public static void move(double x, double y, double turn) {
         // dot of fl and br
-        double dot_fl = dot(Objects.requireNonNull(directions.get(fl)), new double[]{x, y});
-        double dot_fr = dot(Objects.requireNonNull(directions.get(fr)), new double[]{x, y});
+        double dot_fl = dot(Objects.requireNonNull(directions.get(fl)), new double[]{x, y}) + turn;
+        double dot_fr = dot(Objects.requireNonNull(directions.get(fr)), new double[]{x, y}) + turn;
+        double dot_bl = dot(Objects.requireNonNull(directions.get(fr)), new double[]{x, y}) - turn;
+        double dot_br = dot(Objects.requireNonNull(directions.get(fl)), new double[]{x, y}) - turn;
 
-        double max = Math.max(Math.abs(dot_fl), Math.abs(dot_fr));
+        double max = Math.max(Math.max(Math.abs(dot_fl), Math.abs(dot_fr)), Math.max(Math.abs(dot_bl), Math.abs(dot_br)));
         fl.setPower(dot_fl / max);
-        br.setPower(dot_fl / max);
+        br.setPower(dot_br / max);
 
         fr.setPower(dot_fr / max);
-        bl.setPower(dot_fr / max);
+        bl.setPower(dot_bl / max);
     }
 
     // Each double[] will be a direction vector of length two
