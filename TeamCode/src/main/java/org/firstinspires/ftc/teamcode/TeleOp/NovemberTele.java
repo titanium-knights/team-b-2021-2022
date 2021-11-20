@@ -26,8 +26,8 @@ public class NovemberTele extends LinearOpMode{
         waitForStart();
 
         while (opModeIsActive()) {
-            MecanumDrive.move(gamepad1.left_stick_x, -gamepad1.left_stick_y);
-
+            mecanumDrive.move(gamepad1.left_stick_x, -gamepad1.left_stick_y);
+            mecanumDrive.rotate(gamepad1.right_stick_x);
 //            if (gamepad1.a) {
 //                arm.stop();
 //            }

@@ -1,0 +1,19 @@
+package org.firstinspires.ftc.teamcode.Autonomous;
+
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import org.firstinspires.ftc.teamcode.utils.MecanumDrive;
+
+@Autonomous(name = "ParkAutonRed")
+public class ParkAutonRed extends LinearOpMode {
+    public void runOpMode() {
+        MecanumDrive mecDrive = new MecanumDrive(hardwareMap);
+
+        waitForStart();
+
+        mecDrive.rotate(Math.toRadians(90));
+        mecDrive.move(1,0);
+        sleep(250);
+        mecDrive.move(0,0);
+    }
+}
