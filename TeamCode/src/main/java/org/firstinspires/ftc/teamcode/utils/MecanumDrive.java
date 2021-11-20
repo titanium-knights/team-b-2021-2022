@@ -20,6 +20,11 @@ public class MecanumDrive {
         bl.setDirection(DcMotorSimple.Direction.FORWARD);
         fr.setDirection(DcMotorSimple.Direction.REVERSE);
         br.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        directions.put(fl, new double[]{1, 1});
+        directions.put(fr, new double[]{1, -1});
+        directions.put(bl, new double[]{1, -1});
+        directions.put(br, new double[]{1, 1});
     }
 
     public static DcMotor fl, fr, bl, br;
@@ -34,7 +39,7 @@ public class MecanumDrive {
         double dot_bl = dot(Objects.requireNonNull(directions.get(fr)), new double[]{x, y}) - turn;
         double dot_br = dot(Objects.requireNonNull(directions.get(fl)), new double[]{x, y}) - turn;
 
-        double max = Math.max(Math.max(Math.abs(dot_fl), Math.abs(dot_fr)), Math.max(Math.abs(dot_bl), Math.abs(dot_br)));
+        double max = Math.max(1, Math.max(Math.max(Math.abs(dot_fl), Math.abs(dot_fr)), Math.max(Math.abs(dot_bl), Math.abs(dot_br))));
         fl.setPower(dot_fl / max);
         br.setPower(dot_br / max);
 
