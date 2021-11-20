@@ -13,6 +13,7 @@ public class NovemberTele extends LinearOpMode{
     public static Arm arm;
 
     DcMotor armMotor;
+    DcMotor carousel;
 
 //    public void initialize() {
 //        arm = new Arm(hardwareMap);
@@ -24,6 +25,8 @@ public class NovemberTele extends LinearOpMode{
 
         new MecanumDrive(hardwareMap);
         MecanumDrive.init();
+
+        carousel = hardwareMap.dcMotor.get("carousel");
 
         waitForStart();
 
@@ -39,6 +42,14 @@ public class NovemberTele extends LinearOpMode{
 //            if (gamepad1.right_trigger > 0) {
 //                arm.down();
 //            }
+
+            if (gamepad1.a) {
+                carousel.setPower(1);
+            } else if (gamepad1.b) {
+                carousel.setPower(-1);
+            } else {
+                carousel.setPower(0);
+            }
         }
     }
 }
