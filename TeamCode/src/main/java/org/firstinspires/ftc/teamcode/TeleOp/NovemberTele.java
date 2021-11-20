@@ -12,6 +12,9 @@ public class NovemberTele extends LinearOpMode{
     public static DcMotor fl, fr, bl, br;
     public static Arm arm;
 
+    DcMotor armMotor;
+    DcMotor carousel;
+
 //    public void initialize() {
 //        arm = new Arm(hardwareMap);
 //    }
@@ -20,14 +23,15 @@ public class NovemberTele extends LinearOpMode{
 
 //        initialize();
 
-        MecanumDrive.init();
-        MecanumDrive mecanumDrive = new MecanumDrive(hardwareMap);
+        MecanumDrive drive = new MecanumDrive(hardwareMap);
+
+        carousel = hardwareMap.dcMotor.get("carousel");
 
         waitForStart();
 
         while (opModeIsActive()) {
-            mecanumDrive.move(gamepad1.left_stick_x, -gamepad1.left_stick_y);
-            mecanumDrive.rotate(gamepad1.right_stick_x);
+            drive.move(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x);
+          
 //            if (gamepad1.a) {
 //                arm.stop();
 //            }
@@ -37,6 +41,14 @@ public class NovemberTele extends LinearOpMode{
 //            if (gamepad1.right_trigger > 0) {
 //                arm.down();
 //            }
+
+            if (gamepad1.a) {
+                carousel.setPower(1);
+            } else if (gamepad1.b) {
+                carousel.setPower(-1);
+            } else {
+                carousel.setPower(0);
+            }
         }
     }
 }
