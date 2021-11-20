@@ -27,6 +27,7 @@ public class MecanumDrive {
     public static HashMap<DcMotor, double[]> directions = new HashMap<>();
 
     public void move(double x, double y, double turn) {
+
         // dot of fl and br
         double dot_fl = dot(Objects.requireNonNull(directions.get(fl)), new double[]{x, y}) + turn;
         double dot_fr = dot(Objects.requireNonNull(directions.get(fr)), new double[]{x, y}) + turn;
@@ -42,11 +43,23 @@ public class MecanumDrive {
     }
 
     // Each double[] will be a direction vector of length two
-    public static double dot(double[] a, double[] b) {
+    public double dot(double[] a, double[] b) {
         return a[0] * b[0] + a[1] * b[1];
     }
 
     public void rotate(double r) {
+        double[] arr = new double[]{fl.getPower() + r, fr.getPower() - r, bl.getPower() + r, br.getPower() - r};
+        double max1 = Math.max(Math.abs(arr[0]), Math.abs(arr[1]));
+        double max2 = Math.max(Math.abs(arr[2]), Math.abs(arr[3]));
+        double max = Math.max(max1,max2);
 
+        for (int i = 0; i < 4; i++) {
+            arr[i] /= max;
+        }
+
+        fl.setPower(arr[0]);
+        fr.setPower(arr[1]);
+        bl.setPower(arr[2]);
+        br.setPower(arr[3]);
     }
 }
