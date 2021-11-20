@@ -23,15 +23,14 @@ public class NovemberTele extends LinearOpMode{
 
 //        initialize();
 
-        new MecanumDrive(hardwareMap);
-        MecanumDrive.init();
+        MecanumDrive drive = new MecanumDrive(hardwareMap);
 
         carousel = hardwareMap.dcMotor.get("carousel");
 
         waitForStart();
 
         while (opModeIsActive()) {
-            MecanumDrive.move(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x);
+            drive.move(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x);
 
 //            if (gamepad1.a) {
 //                arm.stop();

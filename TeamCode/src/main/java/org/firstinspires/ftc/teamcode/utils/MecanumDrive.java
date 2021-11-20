@@ -15,18 +15,6 @@ public class MecanumDrive {
         fr = hmap.get(DcMotor.class, CONFIG.FRONTRIGHT);
         bl = hmap.get(DcMotor.class, CONFIG.BACKLEFT);
         br = hmap.get(DcMotor.class, CONFIG.BACKRIGHT);
-    }
-
-    public static DcMotor fl, fr, bl, br;
-
-    public static HashMap<DcMotor, double[]> directions = new HashMap<>();
-
-    public static void init() {
-        // Direction Vectors
-        directions.put(fl, new double[]{1, 1});
-        directions.put(fr, new double[]{-1, 1});
-        directions.put(bl, new double[]{-1, 1});
-        directions.put(fl, new double[]{1, 1});
 
         fl.setDirection(DcMotorSimple.Direction.REVERSE);
         bl.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -34,7 +22,11 @@ public class MecanumDrive {
         br.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
-    public static void move(double x, double y, double turn) {
+    public static DcMotor fl, fr, bl, br;
+
+    public static HashMap<DcMotor, double[]> directions = new HashMap<>();
+
+    public void move(double x, double y, double turn) {
         // dot of fl and br
         double dot_fl = dot(Objects.requireNonNull(directions.get(fl)), new double[]{x, y}) + turn;
         double dot_fr = dot(Objects.requireNonNull(directions.get(fr)), new double[]{x, y}) + turn;
