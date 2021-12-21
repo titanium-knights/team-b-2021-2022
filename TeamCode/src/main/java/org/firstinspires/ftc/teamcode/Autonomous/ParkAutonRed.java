@@ -11,8 +11,8 @@ public class ParkAutonRed extends LinearOpMode {
 
         waitForStart();
 
-        mecDrive.move(1,0, Math.toRadians(90));
-        sleep(250);
+        mecDrive.move(0,0.3, 0);
+        sleep(4000);
         mecDrive.move(0,0, 0);
     }
 }

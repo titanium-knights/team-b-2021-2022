@@ -34,7 +34,7 @@ public class MecanumDrive {
         double dot_bl = dot(Objects.requireNonNull(directions.get(fr)), new double[]{x, y}) - turn;
         double dot_br = dot(Objects.requireNonNull(directions.get(fl)), new double[]{x, y}) - turn;
 
-        double max = Math.max(Math.max(Math.abs(dot_fl), Math.abs(dot_fr)), Math.max(Math.abs(dot_bl), Math.abs(dot_br)));
+        double max = Math.max(1, Math.max(Math.max(Math.abs(dot_fl), Math.abs(dot_fr)), Math.max(Math.abs(dot_bl), Math.abs(dot_br))));
         fl.setPower(dot_fl / max);
         br.setPower(dot_br / max);
 
@@ -51,7 +51,7 @@ public class MecanumDrive {
         double[] arr = new double[]{fl.getPower() + r, fr.getPower() - r, bl.getPower() + r, br.getPower() - r};
         double max1 = Math.max(Math.abs(arr[0]), Math.abs(arr[1]));
         double max2 = Math.max(Math.abs(arr[2]), Math.abs(arr[3]));
-        double max = Math.max(max1,max2);
+        double max = Math.max(max1, max2);
 
         for (int i = 0; i < 4; i++) {
             arr[i] /= max;

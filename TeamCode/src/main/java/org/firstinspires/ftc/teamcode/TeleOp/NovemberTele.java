@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.utils.Arm;
 import org.firstinspires.ftc.teamcode.utils.MecanumDrive;
 
 @TeleOp(name="Mecanum Drive")
-public class NovemberTele extends LinearOpMode{
+public class NovemberTele extends LinearOpMode {
     public static DcMotor fl, fr, bl, br;
     public static Arm arm;
 
@@ -24,13 +24,14 @@ public class NovemberTele extends LinearOpMode{
 //        initialize();
 
         MecanumDrive drive = new MecanumDrive(hardwareMap);
-
         carousel = hardwareMap.dcMotor.get("carousel");
+        boolean buttonPressed = false;
+        boolean slowMode = false;
 
         waitForStart();
 
         while (opModeIsActive()) {
-            drive.move(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x);
+            drive.move(gamepad1.left_stick_x * (slowMode ? 0.3 : 1), -gamepad1.left_stick_y * (slowMode ? 0.3 : 1), gamepad1.right_stick_x * (slowMode ? 0.3 : 1));
           
 //            if (gamepad1.a) {
 //                arm.stop();
@@ -43,12 +44,22 @@ public class NovemberTele extends LinearOpMode{
 //            }
 
             if (gamepad1.a) {
-                carousel.setPower(1);
+                carousel.setPower(0.3);
             } else if (gamepad1.b) {
-                carousel.setPower(-1);
+                carousel.setPower(-0.3);
             } else {
                 carousel.setPower(0);
             }
+
+            if (gamepad1.x && !buttonPressed) {
+                slowMode = !slowMode;
+            }
+
+            telemetry.addData("Slow Mode", slowMode ? "Yes" : "No");
+            telemetry.update();
+
+            buttonPressed = gamepad1.x;
+
         }
     }
 }
