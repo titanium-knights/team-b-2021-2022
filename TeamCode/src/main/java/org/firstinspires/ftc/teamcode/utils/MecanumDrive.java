@@ -56,7 +56,7 @@ public class MecanumDrive {
         double[] arr = new double[]{fl.getPower() + r, fr.getPower() - r, bl.getPower() + r, br.getPower() - r};
         double max1 = Math.max(Math.abs(arr[0]), Math.abs(arr[1]));
         double max2 = Math.max(Math.abs(arr[2]), Math.abs(arr[3]));
-        double max = Math.max(max1,max2);
+        double max = Math.max(max1, max2);
 
         for (int i = 0; i < 4; i++) {
             arr[i] /= max;

@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.utils.Arm;
 import org.firstinspires.ftc.teamcode.utils.MecanumDrive;
 
 @TeleOp(name="Mecanum Drive")
-public class NovemberTele extends LinearOpMode{
+public class NovemberTele extends LinearOpMode {
     public static DcMotor fl, fr, bl, br;
     public static Arm arm;
 
@@ -23,11 +23,10 @@ public class NovemberTele extends LinearOpMode{
 
 //        initialize();
 
-        MecanumDrive drive = new MecanumDrive(hardwareMap);
-        boolean buttonPressed = false;
-        boolean slowMode = false;
 
         carousel = hardwareMap.dcMotor.get("carousel");
+        boolean buttonPressed = false;
+        boolean slowMode = false;
 
         waitForStart();
 
