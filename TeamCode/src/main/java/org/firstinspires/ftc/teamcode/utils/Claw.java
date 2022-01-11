@@ -4,14 +4,14 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Claw {
-    DcMotor armMotor;
+    DcMotor clawMotor;
 
     public Claw(HardwareMap hmap) {
-        this.armMotor = hmap.dcMotor.get(CONFIG.ARMMOTOR);
+        this.clawMotor = hmap.dcMotor.get(CONFIG.ARMMOTOR);
     }
 
     public void spin(double dx) {
-        armMotor.setPower(dx);
+        clawMotor.setPower(dx);
     }
 
     public void close() {
@@ -27,6 +27,6 @@ public class Claw {
     }
 
     public void reverse() {
-        spin(armMotor.getPower() * -1);
+        spin(clawMotor.getPower() * -1);
     }
 }
