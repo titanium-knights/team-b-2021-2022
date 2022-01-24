@@ -54,7 +54,7 @@ public class JanuaryTele extends LinearOpMode{
                 carousel.setPower(0);
             }
 
-            if (gamepad1.x && !buttonPressed) {
+            if (gamepad1.left_bumper && !buttonPressed) {
                 slowMode = !slowMode;
             }
 
