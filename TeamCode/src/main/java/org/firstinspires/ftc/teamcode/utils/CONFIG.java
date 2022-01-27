@@ -11,6 +11,7 @@ public class CONFIG {
     public static String RIGHTDIST = "right";
     public static String ARMMOTOR = "am";
     public static String ANGLE = "angle";
+    public static String CLAW = "claw";
     public static double centerOfRobit2BackDistance = 8; //inches
     public static double centerOfRobit2LeftDistance = 8; //inches
     public static String SHOOTER = "shooter";
