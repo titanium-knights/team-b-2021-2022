@@ -36,16 +36,17 @@ public class JanuaryTele extends LinearOpMode{
         while (opModeIsActive()) {
             drive.move(gamepad1.left_stick_x * (slowMode ? 0.3 : 1), -gamepad1.left_stick_y * (slowMode ? 0.3 : 1), gamepad1.right_stick_x * (slowMode ? 0.3 : 1));
 
-//            if (gamepad1.a) {
-//                arm.stop();
-//            }
-//            if (gamepad1.left_trigger > 0) {
-//                arm.up();
-//            }
-//            if (gamepad1.right_trigger > 0) {
-//                arm.down();
-//            }
-
+            // #----------Arm---------#
+            if (gamepad1.right_bumper) {
+                arm.stop();
+            }
+            if (gamepad1.left_trigger > 0) {
+                arm.up();
+            }
+            if (gamepad1.right_trigger > 0) {
+                arm.down();
+            }
+            // #----------Carousel---------#
             if (gamepad1.a) {
                 carousel.setPower(0.3);
             } else if (gamepad1.b) {

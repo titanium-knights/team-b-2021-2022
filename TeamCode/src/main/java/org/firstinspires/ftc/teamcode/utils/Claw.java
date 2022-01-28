@@ -7,7 +7,7 @@ public class Claw {
     DcMotor clawMotor;
 
     public Claw(HardwareMap hmap) {
-        this.clawMotor = hmap.dcMotor.get(CONFIG.ARMMOTOR);
+        this.clawMotor = hmap.dcMotor.get(CONFIG.CLAW);
     }
 
     public void spin(double dx) {

@@ -30,8 +30,8 @@ public class NovemberTele extends LinearOpMode {
 
         waitForStart();
 
-        while (opModeIsActive()) {
-            drive.move(gamepad1.left_stick_x * (slowMode ? 0.3 : 1), -gamepad1.left_stick_y * (slowMode ? 0.3 : 1), gamepad1.right_stick_x * (slowMode ? 0.3 : 1));
+//        while (opModeIsActive()) {
+ //           drive.move(gamepad1.left_stick_x * (slowMode ? 0.3 : 1), -gamepad1.left_stick_y * (slowMode ? 0.3 : 1), gamepad1.right_stick_x * (slowMode ? 0.3 : 1));
           
 //            if (gamepad1.a) {
 //                arm.stop();
@@ -61,5 +61,5 @@ public class NovemberTele extends LinearOpMode {
             buttonPressed = gamepad1.x;
         }
     }
-}
+//}
 
