@@ -2,31 +2,24 @@ package org.firstinspires.ftc.teamcode.utils;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 public class Claw {
-    DcMotor clawMotor;
+    Servo clawServo;
 
     public Claw(HardwareMap hmap) {
-        this.clawMotor = hmap.dcMotor.get(CONFIG.CLAW);
+        this.clawServo = hmap.servo.get(CONFIG.CLAW);
     }
 
     public void spin(double dx) {
-        clawMotor.setPower(dx);
+        clawServo.setPosition(dx);
     }
 
     public void close() {
-        spin(1);
-    }
-
-    public void stop() {
-        spin(0);
+        spin(.5);
     }
 
     public void open() {
-        spin(-1);
-    }
-
-    public void reverse() {
-        spin(clawMotor.getPower() * -1);
+        spin(1);
     }
 }

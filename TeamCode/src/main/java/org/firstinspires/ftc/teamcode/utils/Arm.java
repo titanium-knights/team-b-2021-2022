@@ -21,19 +21,18 @@ public class Arm {
     }
 
     public void stop() {
-        spin(0);
+        spin(1/(double) 100);
     }
 
-    public void reverse() {
-        spin(armMotor.getPower() * -1);
+//    public void reverse() {
+//        spin(armMotor.getPower() * -1);
+//    }
+    public void up(double dx) {
+        spin(dx/10);
     }
 
-    public void up() {
-        spin(1);
-    }
-
-    public void down() {
-        spin(-1);
+    public void down(double dx) {
+        spin(-(dx/10.0));
     }
 }
 
