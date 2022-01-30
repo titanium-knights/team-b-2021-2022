@@ -20,10 +20,18 @@ public class ParkAutonRed extends LinearOpMode {
 
         mecDrive.move(0, -0.3, 0);
         sleep(2000);
+        mecDrive.move(0,0,0);
         carousel.setPower(.3);
 
-        sleep(2000);
-        mecDrive.move(0,0, 0);
+        /*
+
+            if the top moves too far:
+            mecDrive.move(0, -0.15, 0);
+            sleep(2000);
+            mecDrive.mpove(0,0,0);
+            carousel.setPower(.3);
+
+         */
 
         sleep(2000);
         carousel.setPower(0);
@@ -32,5 +40,22 @@ public class ParkAutonRed extends LinearOpMode {
         mecDrive.move(0,.6,0);
         sleep(4000);
         mecDrive.move(0,0, 0);
+
+        /*
+
+        if this moves too far forward:
+
+        sleep(2000);
+        mecDrive.move(0,.3,0);
+        sleep(4000);
+        mecDrive.move(0,0, 0);
+
+         */
+
+        /*
+
+        if the robot is facing the opposite orientation, set all the positive moves to negatives and negative moves to positives
+
+         */
     }
 }
