@@ -29,7 +29,7 @@ public class ParkAutonRed extends LinearOpMode {
         carousel.setPower(0);
 
         sleep(1000);
-        mecDrive.move(0,.3,0);
+        mecDrive.move(0,.6,0);
         sleep(4000);
         mecDrive.move(0,0, 0);
     }
