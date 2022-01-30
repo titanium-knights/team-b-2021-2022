@@ -23,10 +23,14 @@ public class ParkAutonRed extends LinearOpMode {
         carousel.setPower(.3);
 
         sleep(1000);
+        mecDrive.move(0,0, 0);
+
+        sleep(1000);
         carousel.setPower(0);
 
+        sleep(1000);
+        mecDrive.move(0,.3,0);
+        sleep(4000);
         mecDrive.move(0,0, 0);
-//        sleep(4000);
-//        mecDrive.move(0,0, 0);
     }
 }
