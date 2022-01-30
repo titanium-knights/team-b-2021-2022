@@ -28,7 +28,7 @@ public class Arm {
 //        spin(armMotor.getPower() * -1);
 //    }
     public void up(double dx) {
-        spin(dx/10);
+        spin(dx/5.0);
     }
 
     public void down(double dx) {
