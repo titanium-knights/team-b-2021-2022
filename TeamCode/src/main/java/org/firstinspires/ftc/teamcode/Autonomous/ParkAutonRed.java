@@ -19,13 +19,13 @@ public class ParkAutonRed extends LinearOpMode {
         // robot will start facing the warehouse
 
         mecDrive.move(0, -0.3, 0);
-        sleep(2000);
+        sleep(1000);
         carousel.setPower(.3);
 
-        sleep(2000);
+        sleep(1000);
         carousel.setPower(0);
 
-        mecDrive.move(0,0.3, 0);
+        mecDrive.move(0,0, 0);
 //        sleep(4000);
 //        mecDrive.move(0,0, 0);
     }
