@@ -9,5 +9,7 @@ public class FebruaryTele extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
+        // to slow down mecanum drive you have to mulitply gamepad_1.stick * a scalar
+        // start at 0.5
     }
 }
