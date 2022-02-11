@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.teamcode.utils.Arm;
+import org.firstinspires.ftc.teamcode.utils.Carousel;
 import org.firstinspires.ftc.teamcode.utils.Claw;
 import org.firstinspires.ftc.teamcode.utils.MecanumDrive;
 
@@ -12,8 +13,8 @@ import org.firstinspires.ftc.teamcode.utils.MecanumDrive;
 @Autonomous(name = "BlueDucksAuton")
 public class BlueDucksAuton extends LinearOpMode {
     public void runOpMode() {
-        DcMotor carousel;
-        carousel = hardwareMap.dcMotor.get("carousel");
+
+        Carousel carousel = new Carousel(hardwareMap);
 
 
         //approach and drop into top level of the station
@@ -26,7 +27,7 @@ public class BlueDucksAuton extends LinearOpMode {
         //spin carousel
 
 
-        carousel.setPower(4);
+        carousel.spin(4);
         sleep(2000);
 
         //move diagonally into parking space
