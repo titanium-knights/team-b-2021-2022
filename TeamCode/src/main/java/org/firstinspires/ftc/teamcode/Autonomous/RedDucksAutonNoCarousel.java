@@ -6,7 +6,7 @@ import org.firstinspires.ftc.teamcode.utils.Arm;
 import org.firstinspires.ftc.teamcode.utils.Claw;
 import org.firstinspires.ftc.teamcode.utils.MecanumDrive;
 
-@Autonomous(name = "RedDucksAuton")
+@Autonomous(name = "RedDucksAutonNoCarousel")
 public class RedDucksAutonNoCarousel extends LinearOpMode {
     public void runOpMode() {
         int armnum = 1;
@@ -25,19 +25,19 @@ public class RedDucksAutonNoCarousel extends LinearOpMode {
         //start - turn to middle
         robot.move(0, 0, 0.25);
         //one tile, middle
-        robot.move(1, 0, 0);
+        robot.move(.1, 0, 0);
         //turn, face hub
         robot.move(0, 0, -0.25);
         //move to hub
-        robot.move(0, 1, 0);
+        robot.move(0, .1, 0);
         //release, close, move away, lower
         claw.open();
         claw.close();
-        robot.move(0, -1.5, 0);
+        robot.move(0, -.15, 0);
         arm.down(armnum);
         //turn towards warehouse
         robot.move(0, 0, -0.25);
         //move into warehouse instead of parking space
-        robot.move(0, 3, 0);
+        robot.move(0, .3, 0);
     }
 }
