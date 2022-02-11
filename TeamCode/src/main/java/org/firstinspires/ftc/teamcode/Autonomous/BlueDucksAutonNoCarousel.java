@@ -24,6 +24,8 @@ public class BlueDucksAutonNoCarousel extends LinearOpMode {
         //approach and drop into top level of the station
         MecanumDrive robot = new MecanumDrive(hardwareMap);
 
+        // add sleep()'s if wait time is needed
+
         //start - turn to middle
         robot.move(0, 0, -0.25);
         //one tile, middle
