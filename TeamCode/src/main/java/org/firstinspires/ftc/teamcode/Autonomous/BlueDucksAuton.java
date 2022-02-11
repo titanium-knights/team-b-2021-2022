@@ -37,11 +37,9 @@ public class BlueDucksAuton extends LinearOpMode {
         claw.close();
         robot.move(0, -.15, 0);
         arm.down(armnum);
-        //turn towards warehouse
-        robot.move(0, 0, 0.25);
-        //move into warehouse instead of parking space
-        robot.move(0, .3, 0);
 
+        // CAROUSEL PART STARTS NOW
+        //turn towards carousel
 
     }
 }
