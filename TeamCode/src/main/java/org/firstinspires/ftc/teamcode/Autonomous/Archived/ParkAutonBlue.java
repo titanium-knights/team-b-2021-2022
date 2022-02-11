@@ -37,15 +37,13 @@ public class ParkAutonBlue extends LinearOpMode {
         //release, close, move away, lower
         claw.open();
         claw.close();
-        robot.move(0, -1, 0);
+        robot.move(0, -1.5, 0);
         arm.down(armnum);
-        //turn towards ducks
-        robot.move(0, 0, 0.25);
-        //move one, turn 1/2 right, move to storage
-        robot.move(0, 1, 0);
-        robot.move(0, 0, -0.125);
-        robot.move(0, 1.44, 0);
-        robot.move(0, 0, 0.125);
+        //turn towards warehouse
+        robot.move(0, 0, -0.25);
+        //move into warehouse instead of parking space
+        robot.move(0, 3, 0);
+
 
 
 
