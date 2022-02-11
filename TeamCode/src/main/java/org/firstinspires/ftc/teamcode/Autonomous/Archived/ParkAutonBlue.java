@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.utils.Claw;
 import org.firstinspires.ftc.teamcode.utils.MecanumDrive;
 
 //blue block side
-@Autonomous(name = "ParkAutonBlue")
+@Autonomous(name = "ParkAutonBlueNoCarousel")
 public class ParkAutonBlue extends LinearOpMode {
     public void runOpMode() {
         int armnum = 1;

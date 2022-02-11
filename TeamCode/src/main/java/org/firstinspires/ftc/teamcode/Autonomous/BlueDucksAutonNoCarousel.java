@@ -8,8 +8,8 @@ import org.firstinspires.ftc.teamcode.utils.MecanumDrive;
 
 
 //blue block side
-@Autonomous(name = "BlueDucksAuton")
-public class BlueDucksAuton extends LinearOpMode {
+@Autonomous(name = "BlueDucksAutonNoCarousel")
+public class BlueDucksAutonNoCarousel extends LinearOpMode {
     public void runOpMode() {
         int armnum = 1;
         //Grab freight
@@ -41,7 +41,5 @@ public class BlueDucksAuton extends LinearOpMode {
         robot.move(0, 0, -0.25);
         //move into warehouse instead of parking space
         robot.move(0, 3, 0);
-
-
     }
 }
