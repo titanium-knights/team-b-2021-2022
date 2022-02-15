@@ -16,7 +16,6 @@ public class BlueDucksAuton extends LinearOpMode {
 
         Carousel carousel = new Carousel(hardwareMap);
 
-
         //approach and drop into top level of the station
         MecanumDrive robot = new MecanumDrive(hardwareMap);
 
