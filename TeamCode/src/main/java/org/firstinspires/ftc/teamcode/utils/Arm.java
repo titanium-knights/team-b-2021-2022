@@ -27,13 +27,26 @@ public class Arm {
 //    public void reverse() {
 //        spin(armMotor.getPower() * -1);
 //    }
+    public void up() {
+        armMotor.setTargetPosition(120);
+        armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        armMotor.setPower(0.3);
+    }
+
+    public void down() {
+        armMotor.setTargetPosition(0);
+        armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        armMotor.setPower(0.3);
+    }
+
+    /*
     public void up(double dx) {
         spin(dx/5.0);
     }
 
     public void down(double dx) {
         spin(-(dx/10.0));
-    } // slow this down
+    }
+     */
 }
 
-//double motor servo,

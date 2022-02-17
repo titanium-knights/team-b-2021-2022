@@ -37,7 +37,7 @@ public class FebruaryTele extends LinearOpMode {
                 slowMode = !slowMode;
             }
 
-            drive.move(gamepad1.left_stick_x * (slowMode ? 0.3 : 1), -gamepad1.left_stick_y * (slowMode ? 0.3 : 1), gamepad1.right_stick_x * (slowMode ? 0.3 : 1));
+            drive.move(gamepad1.left_stick_x * (slowMode ? 0.3 : .7), -gamepad1.left_stick_y * (slowMode ? 0.3 : .7), gamepad1.right_stick_x * (slowMode ? 0.3 : .7));
 
             // #----------Arm---------#
             // delegated for gamepad2
