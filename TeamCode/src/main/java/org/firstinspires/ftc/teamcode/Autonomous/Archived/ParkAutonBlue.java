@@ -21,7 +21,7 @@ public class ParkAutonBlue extends LinearOpMode {
         //lift
         //determine how high arm has to go to reach the top
         Arm arm = new Arm(hardwareMap);
-        arm.up(armnum);
+//        arm.up(armnum);
 
         //approach and drop into top level of the station
         MecanumDrive robot = new MecanumDrive(hardwareMap);
@@ -38,7 +38,7 @@ public class ParkAutonBlue extends LinearOpMode {
         claw.open();
         claw.close();
         robot.move(0, -1.5, 0);
-        arm.down(armnum);
+//        arm.down(armnum);
         //turn towards warehouse
         robot.move(0, 0, -0.25);
         //move into warehouse instead of parking space

@@ -45,7 +45,7 @@ public class FebruaryTele extends LinearOpMode {
                 arm.stop();
             }
             if (gamepad1.left_trigger > 0) {
-                arm.down(gamepad1.left_trigger);
+                arm.down();
             }
             else if (gamepad1.right_trigger > 0) {
                 arm.spin(gamepad1.right_trigger);

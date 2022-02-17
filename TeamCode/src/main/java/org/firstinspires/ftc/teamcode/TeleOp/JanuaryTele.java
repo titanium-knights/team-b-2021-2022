@@ -45,9 +45,9 @@ public class JanuaryTele extends LinearOpMode{
             if (gamepad1.right_bumper) {
                 arm.stop();
             }
-            if (gamepad1.left_trigger > 0) {
-                arm.down(gamepad1.left_trigger);
-            }
+//            if (gamepad1.left_trigger > 0) {
+//                arm.down(gamepad1.left_trigger);
+//            }
             else if (gamepad1.right_trigger > 0) {
                 arm.spin(gamepad1.right_trigger);
             }

@@ -28,7 +28,7 @@ public class Arm {
 //        spin(armMotor.getPower() * -1);
 //    }
     public void up() {
-        armMotor.setTargetPosition(120);
+        armMotor.setTargetPosition(90);
         armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         armMotor.setPower(0.3);
     }

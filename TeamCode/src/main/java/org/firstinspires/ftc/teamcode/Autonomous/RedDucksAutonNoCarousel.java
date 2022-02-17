@@ -17,7 +17,7 @@ public class RedDucksAutonNoCarousel extends LinearOpMode {
         //lift
         //determine how high arm has to go to reach the top
         Arm arm = new Arm(hardwareMap);
-        arm.up(armnum);
+        arm.up();
 
         //approach and drop into top level of the station
         MecanumDrive robot = new MecanumDrive(hardwareMap);
@@ -34,7 +34,7 @@ public class RedDucksAutonNoCarousel extends LinearOpMode {
         claw.open();
         claw.close();
         robot.move(0, -.15, 0);
-        arm.down(armnum);
+        arm.down();
         //turn towards warehouse
         robot.move(0, 0, -0.25);
         //move into warehouse instead of parking space
