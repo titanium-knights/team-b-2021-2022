@@ -33,7 +33,7 @@ public class Arm {
 
     public void down(double dx) {
         spin(-(dx/10.0));
-    } // slow this down
+    }
 }
 
 //double motor servo,

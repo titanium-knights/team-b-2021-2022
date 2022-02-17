@@ -15,7 +15,7 @@ public class FebruaryTele extends LinearOpMode {
     public static Claw claw;
 
     DcMotor carousel;
-
+    // do you see this
     public void initialize() {
         claw = new Claw(hardwareMap);
         arm = new Arm(hardwareMap);
@@ -37,7 +37,7 @@ public class FebruaryTele extends LinearOpMode {
                 slowMode = !slowMode;
             }
 
-            drive.move(gamepad1.left_stick_x * (slowMode ? 0.3 : 1), -gamepad1.left_stick_y * (slowMode ? 0.3 : 1), gamepad1.right_stick_x * (slowMode ? 0.3 : 1));
+            drive.move(gamepad1.left_stick_x * (slowMode ? 0.3 : 0.7), -gamepad1.left_stick_y * (slowMode ? 0.3 : 0.7), gamepad1.right_stick_x * (slowMode ? 0.3 : 1));
 
             // #----------Arm---------#
             // delegated for gamepad2
