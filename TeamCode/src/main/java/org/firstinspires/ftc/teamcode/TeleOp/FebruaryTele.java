@@ -27,6 +27,13 @@ public class FebruaryTele extends LinearOpMode {
         MecanumDrive drive = new MecanumDrive(hardwareMap);
         boolean slowMode = false;
 
+        // Note from Umar: I'm wondering if when we run setTargetPosition(90), it sets the target position 90 degrees relative to the current position
+        // However, our current position is always turning when we run arm.up() or arm.down(), which means the target position will continue increasing
+        // because the current position continues increasing when we hold one of the triggers down. So, I'm gonna try making a triggerPressed boolean so
+        // that pressing the trigger again will do nothing while the arm rotates up or down.
+        // IMPORTANT: THIS SOLUTION DOES NOT WORK CURRENTLY - Umar
+        boolean triggerPressed = false;
+
         carousel = hardwareMap.dcMotor.get("carousel");
 
         waitForStart();
@@ -41,14 +48,24 @@ public class FebruaryTele extends LinearOpMode {
 
             // #----------Arm---------#
             // delegated for gamepad2
-            if (gamepad1.right_bumper) {
-                arm.stop();
-            }
-            if (gamepad1.left_trigger > 0) {
+//            if (gamepad1.right_bumper) {
+//                arm.stop();
+//            }
+            if (gamepad1.left_trigger > 0 && !triggerPressed) {
+                //arm.setPower(-gamepad1.left_trigger);
+                telemetry.addData("triggerPressed", "true");
+                triggerPressed = true;
                 arm.down();
+                telemetry.addData("triggerPressed", "false");
+                triggerPressed = false; // my intention is that we set triggerPressed to true until the arm goes down, and then we set triggerPressed to false after
             }
-            else if (gamepad1.right_trigger > 0) {
-                arm.spin(gamepad1.right_trigger);
+            else if (gamepad1.right_trigger > 0 && !triggerPressed) {
+                //arm.setPower(gamepad1.right_trigger);
+                telemetry.addData("triggerPressed", "true");
+                triggerPressed = true;
+                arm.up();
+                telemetry.addData("triggerPressed", "false");
+                triggerPressed = false;
             }
             else{
                 arm.stop();
@@ -72,6 +89,7 @@ public class FebruaryTele extends LinearOpMode {
             }
 
             telemetry.addData("Slow Mode", slowMode ? "Yes" : "No");
+            telemetry.addData("Arm Position", arm.getEncoderPosition());
             telemetry.update();
         }
         // to slow down mecanum drive you have to mulitply gamepad_1.stick * a scalar

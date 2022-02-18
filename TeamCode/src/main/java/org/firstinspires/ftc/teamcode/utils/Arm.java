@@ -13,6 +13,7 @@ public class Arm {
     public Arm(HardwareMap hmap) {
         this.armMotor = hmap.dcMotor.get(CONFIG.ARMMOTOR);
         armMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        armMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         armMotor.setZeroPowerBehavior(BRAKE);
     }
 
@@ -20,25 +21,37 @@ public class Arm {
         armMotor.setPower(dx);
     }
 
+    /*
     public void stop() {
         spin(1/(double) 100);
+    }
+    */
+
+    public void stop() {
+        armMotor.setPower(0);
     }
 
 //    public void reverse() {
 //        spin(armMotor.getPower() * -1);
-//    }
+//    }w
+    public int getEncoderPosition(){
+        return armMotor.getCurrentPosition();
+    }
     public void up() {
-        armMotor.setTargetPosition(90);
         armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        armMotor.setTargetPosition(90);
         armMotor.setPower(0.3);
     }
 
     public void down() {
-        armMotor.setTargetPosition(0);
+
         armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        armMotor.setTargetPosition(-90);
         armMotor.setPower(0.3);
     }
-
+    public void setPower(double pwr){
+        armMotor.setPower(pwr);
+    }
     /*
     public void up(double dx) {
         spin(dx/5.0);
