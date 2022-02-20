@@ -1,14 +1,13 @@
 package org.firstinspires.ftc.teamcode.utils;
-
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class Claw {
+public class Claw_R {
     Servo clawServo;
 
-    public Claw(HardwareMap hmap) {
-        this.clawServo = hmap.servo.get(CONFIG.CLAW);
+    public Claw_R(HardwareMap hmap) {
+        this.clawServo = hmap.servo.get(CONFIG.CLAW_R);
     }
 
     public void spin(double dx) {

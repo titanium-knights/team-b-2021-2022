@@ -5,6 +5,8 @@ import static com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.BRAKE;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import java.lang.Thread;
+
 public class Arm {
 
 
@@ -37,18 +39,35 @@ public class Arm {
     public int getEncoderPosition(){
         return armMotor.getCurrentPosition();
     }
+
     public void up() {
-        armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         armMotor.setTargetPosition(90);
+        armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         armMotor.setPower(0.3);
     }
 
     public void down() {
-
-        armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         armMotor.setTargetPosition(-90);
+        armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         armMotor.setPower(0.3);
     }
+
+    public void upToPosition() throws InterruptedException {
+        armMotor.setTargetPosition(90);
+        armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        armMotor.setPower(0.3);
+        Thread.sleep(1700); // 1.7 seconds
+        armMotor.setPower(0);
+    }
+
+    public void downToPosition() throws InterruptedException {
+        armMotor.setTargetPosition(-90);
+        armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        armMotor.setPower(0.3);
+        Thread.sleep(1700); // 1.7 seconds
+        armMotor.setPower(0);
+    }
+
     public void setPower(double pwr){
         armMotor.setPower(pwr);
     }

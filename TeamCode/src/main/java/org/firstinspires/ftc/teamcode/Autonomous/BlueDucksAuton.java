@@ -5,7 +5,9 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.teamcode.utils.Arm;
 import org.firstinspires.ftc.teamcode.utils.Carousel;
-import org.firstinspires.ftc.teamcode.utils.Claw;
+//import org.firstinspires.ftc.teamcode.utils.Claw;
+import org.firstinspires.ftc.teamcode.utils.Claw_L;
+import org.firstinspires.ftc.teamcode.utils.Claw_R;
 import org.firstinspires.ftc.teamcode.utils.MecanumDrive;
 
 

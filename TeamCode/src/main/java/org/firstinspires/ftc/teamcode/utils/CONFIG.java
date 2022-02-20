@@ -1,7 +1,8 @@
 package org.firstinspires.ftc.teamcode.utils;
 
 public class CONFIG {
-    public static String CLAW = "claw";
+    public static String CLAW_L = "leftservo";
+    public static String CLAW_R = "rightservo";
     public static String FRONTLEFT = "fl";
     public static String FRONTRIGHT = "fr";
     public static String BACKLEFT = "bl";

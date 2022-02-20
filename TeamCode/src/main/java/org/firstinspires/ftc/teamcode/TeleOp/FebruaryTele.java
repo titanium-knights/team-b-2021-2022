@@ -5,23 +5,26 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.utils.Arm;
-import org.firstinspires.ftc.teamcode.utils.Claw;
+import org.firstinspires.ftc.teamcode.utils.Claw_L;
+import org.firstinspires.ftc.teamcode.utils.Claw_R;
 import org.firstinspires.ftc.teamcode.utils.MecanumDrive;
 
 @TeleOp(name="Feb Tele")
 public class FebruaryTele extends LinearOpMode {
     public static DcMotor fl, fr, bl, br;
     public static Arm arm;
-    public static Claw claw;
+    public static Claw_L claw_L;
+    public static Claw_R claw_R;
 
     DcMotor carousel;
 
     public void initialize() {
-        claw = new Claw(hardwareMap);
+        claw_L = new Claw_L(hardwareMap);
+        claw_R = new Claw_R(hardwareMap);
         arm = new Arm(hardwareMap);
     }
 
-    @Override public void runOpMode() {
+    @Override public void runOpMode() throws InterruptedException {
         initialize();
 
         MecanumDrive drive = new MecanumDrive(hardwareMap);
@@ -32,7 +35,7 @@ public class FebruaryTele extends LinearOpMode {
         // because the current position continues increasing when we hold one of the triggers down. So, I'm gonna try making a triggerPressed boolean so
         // that pressing the trigger again will do nothing while the arm rotates up or down.
         // IMPORTANT: THIS SOLUTION DOES NOT WORK CURRENTLY - Umar
-        boolean triggerPressed = false;
+        // boolean triggerPressed = false;
 
         carousel = hardwareMap.dcMotor.get("carousel");
 
@@ -40,7 +43,7 @@ public class FebruaryTele extends LinearOpMode {
 
         while (opModeIsActive()) {
             // #----------Slow Mode---------#
-            if (gamepad1.left_bumper) {
+            if (gamepad1.dpad_up) {
                 slowMode = !slowMode;
             }
 
@@ -51,23 +54,33 @@ public class FebruaryTele extends LinearOpMode {
 //            if (gamepad1.right_bumper) {
 //                arm.stop();
 //            }
-            if (gamepad1.left_trigger > 0 && !triggerPressed) {
+            if (gamepad1.left_trigger > 0) {
                 //arm.setPower(-gamepad1.left_trigger);
-                telemetry.addData("triggerPressed", "true");
-                triggerPressed = true;
+//                telemetry.addData("triggerPressed", "true");
+//                triggerPressed = true;
                 arm.down();
-                telemetry.addData("triggerPressed", "false");
-                triggerPressed = false; // my intention is that we set triggerPressed to true until the arm goes down, and then we set triggerPressed to false after
+//                telemetry.addData("triggerPressed", "false");
+//                triggerPressed = false; // my intention is that we set triggerPressed to true until the arm goes down, and then we set triggerPressed to false after
             }
-            else if (gamepad1.right_trigger > 0 && !triggerPressed) {
+            else if (gamepad1.right_trigger > 0) {
                 //arm.setPower(gamepad1.right_trigger);
-                telemetry.addData("triggerPressed", "true");
-                triggerPressed = true;
+//                telemetry.addData("triggerPressed", "true");
+//                triggerPressed = true;
                 arm.up();
-                telemetry.addData("triggerPressed", "false");
-                triggerPressed = false;
+//                telemetry.addData("triggerPressed", "false");
+//                triggerPressed = false;
             }
-            else{
+            else if (gamepad1.left_bumper) {
+                telemetry.addData("Left bumper", "start");
+                arm.downToPosition();
+                telemetry.addData("Left bumper", "end");
+            }
+            else if (gamepad1.right_bumper) {
+                telemetry.addData("Right bumper", "start");
+                arm.upToPosition();
+                telemetry.addData("Right bumper", "end");
+            }
+            else {
                 arm.stop();
             }
 
@@ -82,10 +95,12 @@ public class FebruaryTele extends LinearOpMode {
 
             // #----------Claw---------#
             if (gamepad1.x) {
-                claw.close();
+                claw_L.close();
+                claw_R.close();
             }
             if (gamepad1.y) {
-                claw.open();
+                claw_L.open();
+                claw_R.open();
             }
 
             telemetry.addData("Slow Mode", slowMode ? "Yes" : "No");
