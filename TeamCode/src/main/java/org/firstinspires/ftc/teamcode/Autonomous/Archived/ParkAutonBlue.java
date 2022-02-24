@@ -2,13 +2,10 @@ package org.firstinspires.ftc.teamcode.Autonomous.Archived;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 
-import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.teamcode.utils.Arm;
 //import org.firstinspires.ftc.teamcode.utils.Claw;
-import org.firstinspires.ftc.teamcode.utils.Claw_L;
-import org.firstinspires.ftc.teamcode.utils.Claw_R;
+import org.firstinspires.ftc.teamcode.utils.Claw;
 import org.firstinspires.ftc.teamcode.utils.MecanumDrive;
 
 //blue block side
@@ -19,10 +16,8 @@ public class ParkAutonBlue extends LinearOpMode {
         //Grab freight
 //        Claw claw = new Claw(hardwareMap);
 //        claw.close();
-        Claw_L claw_L = new Claw_L(hardwareMap);
-        Claw_R claw_R = new Claw_R(hardwareMap);
-        claw_L.close();
-        claw_R.close();
+        Claw claw = new Claw(hardwareMap);
+        claw.close();
 
         //lift
         //determine how high arm has to go to reach the top
@@ -43,10 +38,8 @@ public class ParkAutonBlue extends LinearOpMode {
         //release, close, move away, lower
 //        claw.open();
 //        claw.close();
-        claw_L.open();
-        claw_R.open();
-        claw_L.close();
-        claw_R.close();
+        claw.open();
+        claw.close();
         robot.move(0, -1.5, 0);
 //        arm.down(armnum);
         //turn towards warehouse

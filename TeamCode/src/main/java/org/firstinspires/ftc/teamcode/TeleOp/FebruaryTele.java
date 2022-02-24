@@ -5,22 +5,18 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.utils.Arm;
-import org.firstinspires.ftc.teamcode.utils.Claw_L;
-import org.firstinspires.ftc.teamcode.utils.Claw_R;
+import org.firstinspires.ftc.teamcode.utils.Claw;
 import org.firstinspires.ftc.teamcode.utils.MecanumDrive;
 
 @TeleOp(name="Feb Tele")
 public class FebruaryTele extends LinearOpMode {
     public static DcMotor fl, fr, bl, br;
     public static Arm arm;
-    public static Claw_L claw_L;
-    public static Claw_R claw_R;
-
+    public static Claw claw;
     DcMotor carousel;
 
     public void initialize() {
-        claw_L = new Claw_L(hardwareMap);
-        claw_R = new Claw_R(hardwareMap);
+        claw = new Claw(hardwareMap);
         arm = new Arm(hardwareMap);
     }
 
@@ -29,13 +25,6 @@ public class FebruaryTele extends LinearOpMode {
 
         MecanumDrive drive = new MecanumDrive(hardwareMap);
         boolean slowMode = false;
-
-        // Note from Umar: I'm wondering if when we run setTargetPosition(90), it sets the target position 90 degrees relative to the current position
-        // However, our current position is always turning when we run arm.up() or arm.down(), which means the target position will continue increasing
-        // because the current position continues increasing when we hold one of the triggers down. So, I'm gonna try making a triggerPressed boolean so
-        // that pressing the trigger again will do nothing while the arm rotates up or down.
-        // IMPORTANT: THIS SOLUTION DOES NOT WORK CURRENTLY - Umar
-        // boolean triggerPressed = false;
 
         carousel = hardwareMap.dcMotor.get("carousel");
 
@@ -95,12 +84,10 @@ public class FebruaryTele extends LinearOpMode {
 
             // #----------Claw---------#
             if (gamepad1.x) {
-                claw_L.close();
-                claw_R.close();
+                claw.close();
             }
             if (gamepad1.y) {
-                claw_L.open();
-                claw_R.open();
+                claw.open();
             }
 
             telemetry.addData("Slow Mode", slowMode ? "Yes" : "No");

@@ -4,8 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.utils.Arm;
 //import org.firstinspires.ftc.teamcode.utils.Claw;
-import org.firstinspires.ftc.teamcode.utils.Claw_L;
-import org.firstinspires.ftc.teamcode.utils.Claw_R;
+import org.firstinspires.ftc.teamcode.utils.Claw;
 import org.firstinspires.ftc.teamcode.utils.MecanumDrive;
 
 
@@ -16,8 +15,7 @@ public class BlueDucksAutonNoCarousel extends LinearOpMode {
         //Grab freight
 //        Claw claw = new Claw(hardwareMap);
 //        claw.close();
-        Claw_L claw_L = new Claw_L(hardwareMap);
-        Claw_R claw_R = new Claw_R(hardwareMap);
+        Claw claw = new Claw(hardwareMap);
 
         //lift
         //determine how high arm has to go to reach the top
@@ -40,10 +38,8 @@ public class BlueDucksAutonNoCarousel extends LinearOpMode {
         //release, close, move away, lower
 //        claw.open();
 //        claw.close();
-        claw_L.open();
-        claw_R.open();
-        claw_L.close();
-        claw_R.close();
+        claw.open();
+        claw.close();
         robot.move(0, -.15, 0);
         arm.down();
         //turn towards warehouse
