@@ -39,25 +39,13 @@ public class FebruaryTele extends LinearOpMode {
             drive.move(gamepad1.left_stick_x * (slowMode ? 0.3 : .7), -gamepad1.left_stick_y * (slowMode ? 0.3 : .7), gamepad1.right_stick_x * (slowMode ? 0.3 : .7));
 
             // #----------Arm---------#
-            // delegated for gamepad2
-//            if (gamepad1.right_bumper) {
-//                arm.stop();
-//            }
+
             if (gamepad1.left_trigger > 0) {
-                //arm.setPower(-gamepad1.left_trigger);
-//                telemetry.addData("triggerPressed", "true");
-//                triggerPressed = true;
                 arm.down();
-//                telemetry.addData("triggerPressed", "false");
-//                triggerPressed = false; // my intention is that we set triggerPressed to true until the arm goes down, and then we set triggerPressed to false after
             }
             else if (gamepad1.right_trigger > 0) {
-                //arm.setPower(gamepad1.right_trigger);
-//                telemetry.addData("triggerPressed", "true");
-//                triggerPressed = true;
                 arm.up();
-//                telemetry.addData("triggerPressed", "false");
-//                triggerPressed = false;
+
             }
             else if (gamepad1.left_bumper) {
                 telemetry.addData("Left bumper", "start");

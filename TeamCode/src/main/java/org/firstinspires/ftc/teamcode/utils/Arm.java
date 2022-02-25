@@ -40,18 +40,21 @@ public class Arm {
         return armMotor.getCurrentPosition();
     }
 
+    // right trigger
     public void up() {
         armMotor.setTargetPosition(90);
         armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         armMotor.setPower(0.3);
     }
 
+    // left trigger
     public void down() {
         armMotor.setTargetPosition(-90);
         armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         armMotor.setPower(0.3);
     }
 
+    // right bumper
     public void upToPosition() throws InterruptedException {
         armMotor.setTargetPosition(90);
         armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -60,6 +63,7 @@ public class Arm {
         armMotor.setPower(0);
     }
 
+    // left bumper
     public void downToPosition() throws InterruptedException {
         armMotor.setTargetPosition(-90);
         armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
