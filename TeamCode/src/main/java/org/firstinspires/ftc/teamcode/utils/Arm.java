@@ -67,7 +67,7 @@ public class Arm {
     public void downToPosition() throws InterruptedException {
         armMotor.setTargetPosition(-90);
         armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        armMotor.setPower(0.3);
+        armMotor.setPower(.19);
         Thread.sleep(1700); // 1.7 seconds
         armMotor.setPower(0);
     }

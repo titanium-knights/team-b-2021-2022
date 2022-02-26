@@ -9,17 +9,18 @@ import org.firstinspires.ftc.teamcode.utils.MecanumDrive;
 
 @Autonomous(name = "RedDucksAutonNoCarousel")
 public class RedDucksAutonNoCarousel extends LinearOpMode {
-    public void runOpMode() {
-        int armnum = 1;
+    public void runOpMode() throws InterruptedException {
+        waitForStart();
+
         //Grab freight
 //        Claw claw = new Claw(hardwareMap);
 //        claw.close();
         Claw claw = new Claw(hardwareMap);
-
+        claw.open();
         //lift
         //determine how high arm has to go to reach the top
         Arm arm = new Arm(hardwareMap);
-        arm.up();
+        arm.upToPosition();
 
         //approach and drop into top level of the station
         MecanumDrive robot = new MecanumDrive(hardwareMap);
@@ -38,7 +39,7 @@ public class RedDucksAutonNoCarousel extends LinearOpMode {
         claw.open();
         claw.close();
         robot.move(0, -.15, 0);
-        arm.down();
+        arm.downToPosition();
         //turn towards warehouse
         robot.move(0, 0, -0.25);
         //move into warehouse instead of parking space
