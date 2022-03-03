@@ -17,14 +17,12 @@ public class BlueAutonNoCarousel extends LinearOpMode {
         waitForStart();
 
         //Grab freight
-//        Claw claw = new Claw(hardwareMap);
-//        claw.close();
+
         Claw claw = new Claw(hardwareMap);
         claw.close();
         sleep(500);
 
         //lift
-        //determine how high arm has to go to reach the top
         Arm arm = new Arm(hardwareMap);
         arm.upToPosition();
         sleep(500);
@@ -32,10 +30,19 @@ public class BlueAutonNoCarousel extends LinearOpMode {
         //approach and drop into top level of the station
         MecanumDrive robot = new MecanumDrive(hardwareMap);
 
+        /**
+         * ADDED SUGGESTION:
+         * make the robot move forward and then turn to avoid variability
+         * coming from turning against an edge (traction/sticks)
+         * angles will be changed when we implement CV,
+         * otherwise, movement may remain
+         */
+
         //start - turn to middle
         robot.move(0, 0, .25);
         sleep(500);
-        //one tile, middle
+
+        //approach hub and deliver freight
         robot.move(0, .25, 0);
         sleep(1900);
         robot.move(0,0,0);
@@ -49,14 +56,19 @@ public class BlueAutonNoCarousel extends LinearOpMode {
         robot.move(0, 0, -.25);
         sleep(500);
 
-        //move to hub
+        /**
+         * ADDED SUGGESTION:
+         * turn the robot to face the warehouse here
+         * then strafe home and enter the warehouse
+         * (eliminates angular misalignment)
+         */
+
+        // return to the starting position
         robot.move(0, -.25, 0);
         sleep(1000);
         arm.downToPosition();
         sleep(2000);
         //release, close, move away, lower
-//        claw.open();
-//        claw.close();
 
         //turn towards warehouse
         robot.move(0, 0, -.37);
