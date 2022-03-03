@@ -3,6 +3,7 @@
 *.aar
 *.ap_
 *.aab
+*.env
 
 !libs/*.aar
 

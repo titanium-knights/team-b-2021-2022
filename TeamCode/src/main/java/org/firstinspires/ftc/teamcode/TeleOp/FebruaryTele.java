@@ -63,9 +63,9 @@ public class FebruaryTele extends LinearOpMode {
 
             // #----------Carousel---------#
             if (gamepad1.a) {
-                carousel.setPower(0.3);
+                carousel.setPower(0.55);
             } else if (gamepad1.b) {
-                carousel.setPower(-0.3);
+                carousel.setPower(-0.55);
             } else {
                 carousel.setPower(0);
             }
