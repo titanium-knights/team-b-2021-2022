@@ -52,7 +52,7 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
      * and paste it in to your code on the next line, between the double quotes.
      */
 
-    private static String VUFORIA_KEY;
+    private static String VUFORIA_KEY = "AekBV2P/////AAABmavTjMKllUm0mQej0m+pKLg+rEi6r41OqZtvQzjSdxX3p6BmCBq0b+VDf+p0bmOsiagf5onjXXOFX2s8LWH7/L8rO/5ITpgkFecW48UX8fcWKjpTf/1p7NaAv1IBD2sKHx1kUcfC6NUDT0RjdmqEIAdGoLG1xnJDiQkHDVsO0Ec0uRFO08a6rDh8QsU4x2cz3cTptLekui2n3WclZvKpL3epvfgsolnOGWmdPT6CNYBmvMhKm8hId8MRCGUBTXQUsv74XVok2iiAiYgrwWQ80uW6xizTtxml17bQwJ8KQ250WXipdxp7IqJaHb1Le7yyv8Nl33XiQ4kORZSjcx46aAxYP3e0IV3OHsos4Ef9SjDi";
 
     private static void setKey() throws FileNotFoundException {
         Scanner in = new Scanner(new File(".env"));
