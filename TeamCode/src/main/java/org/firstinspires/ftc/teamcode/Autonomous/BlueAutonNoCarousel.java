@@ -12,9 +12,9 @@ public class BlueAutonNoCarousel extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
         final int DETERMINANT = 400;
-
-        // sleep for 10 seconds so the other team can go into the warehouse
-        sleep(10000);
+        boolean top = false;
+        boolean middle = false;
+        boolean bottom = true;
 
         waitForStart();
 
@@ -26,7 +26,12 @@ public class BlueAutonNoCarousel extends LinearOpMode {
 
         //lift
         Arm arm = new Arm(hardwareMap);
-        arm.upToPosition();
+        if (top)
+            arm.topPosition();
+        else if (middle)
+            arm.middlePosition();
+        else
+            arm.bottomPosition();
         sleep(500);
 
         //approach and drop into top level of the station
@@ -46,12 +51,23 @@ public class BlueAutonNoCarousel extends LinearOpMode {
 
 
         //start - turn to middle
-        robot.move(0, 0, .25);
+
+        robot.move(0, .2, 0);
+        sleep(500);
+
+        robot.move(0, 0, 0);
+
+        robot.move(0, 0, .22);
         sleep(500);
 
         //approach hub and deliver freight
-        robot.move(0, .25, 0);
-        sleep(1900);
+        if (top)
+            robot.move(0, .25, 0);
+        else if (middle)
+            robot.move(0, .22, 0);
+        else
+            robot.move(0, .20, 0);
+        sleep(1400);
         robot.move(0,0,0);
 
         //turn, face hub
@@ -60,28 +76,35 @@ public class BlueAutonNoCarousel extends LinearOpMode {
         claw.close();
         sleep(1000);
 
-        robot.move(0, 0, -.25);
+        robot.move(0,-.2,0);
         sleep(500);
 
-        /**
-         * ADDED SUGGESTION:
-         * turn the robot to face the warehouse here
-         * then strafe home and enter the warehouse
-         * (eliminates angular misalignment)
-         */
+        robot.move(0,0,0);
+
+        robot.move(0, 0, -.22);
+        sleep(500);
+        robot.move(0,0,0);
 
         // return to the starting position
-        robot.move(0, -.25, 0);
-        sleep(1000);
-        arm.downToPosition();
-        sleep(2000);
-        //release, close, move away, lower
+        if (top)
+            robot.move(0, -.25, 0);
+        else if (middle)
+            robot.move(0, -.22, 0);
+        else
+            robot.move(0, -.20, 0);
+        sleep(1200);
+        robot.move(0,0,0);
 
-        //turn towards warehouse
-        robot.move(0, 0, -.37);
-        sleep(1000);
+//        if (top)
+//            arm.downFromTop();
+//        else if (middle)
+//            arm.downFromMiddle();
+//        else
+//            arm.downFromBottom();
+//        sleep(2000);
+        //release, close, move away, lower
         //move into warehouse instead of parking space
-        robot.move(0, .5, 0);
+        robot.move(.5, 0, 0);
         sleep(2500);
         robot.move(0,0,0);
     }

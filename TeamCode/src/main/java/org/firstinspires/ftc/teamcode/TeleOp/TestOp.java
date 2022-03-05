@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -8,8 +10,8 @@ import org.firstinspires.ftc.teamcode.utils.Arm;
 import org.firstinspires.ftc.teamcode.utils.Claw;
 import org.firstinspires.ftc.teamcode.utils.MecanumDrive;
 
-@TeleOp(name="Feb Tele")
-public class FebruaryTele extends LinearOpMode {
+@TeleOp(name="TestOp")
+public class TestOp extends LinearOpMode {
     public static DcMotor fl, fr, bl, br;
     public static Arm arm;
     public static Claw claw;
@@ -39,50 +41,24 @@ public class FebruaryTele extends LinearOpMode {
             drive.move(gamepad1.left_stick_x * (slowMode ? 0.3 : .7), -gamepad1.left_stick_y * (slowMode ? 0.3 : .7), gamepad1.right_stick_x * (slowMode ? 0.3 : .7));
 
             // #----------Arm---------#
-
-            if (gamepad1.left_trigger > 0) {
-                arm.down();
-            }
-            else if (gamepad1.right_trigger > 0) {
-                arm.up();
-
-            }
-            else if (gamepad1.left_bumper) {
-                telemetry.addData("Left bumper", "start");
-                arm.downFromTop();
-                telemetry.addData("Left bumper", "end");
-            }
-            else if (gamepad1.right_bumper) {
-                telemetry.addData("Right bumper", "start");
+            if (gamepad1.a)
+                arm.bottomPosition();
+            if (gamepad1.b)
+                arm.middlePosition();
+            if (gamepad1.y)
                 arm.topPosition();
-                telemetry.addData("Right bumper", "end");
+            if (gamepad1.x)
+                arm.downFromTop();
+            if (gamepad1.left_trigger > 0) {
+                arm.downFromBottom();
             }
-            else {
-                arm.stop();
-            }
-
-            // #----------Carousel---------#
-            if (gamepad1.a) {
-                carousel.setPower(0.55);
-            } else if (gamepad1.b) {
-                carousel.setPower(-0.55);
-            } else {
-                carousel.setPower(0);
-            }
-
-            // #----------Claw---------#
-            if (gamepad1.x) {
-                claw.close();
-            }
-            if (gamepad1.y) {
-                claw.open();
+            if (gamepad1.right_trigger > 0) {
+                arm.downFromMiddle();
             }
 
             telemetry.addData("Slow Mode", slowMode ? "Yes" : "No");
             telemetry.addData("Arm Position", arm.getEncoderPosition());
             telemetry.update();
         }
-        // to slow down mecanum drive you have to mulitply gamepad_1.stick * a scalar
-        // start at 0.5
     }
 }

@@ -67,7 +67,7 @@ public class Arm {
     public void middlePosition() throws InterruptedException {
         armMotor.setTargetPosition(90);
         armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        armMotor.setPower(.2);
+        armMotor.setPower(.13);
         Thread.sleep(1700); // 1.7 seconds
         armMotor.setPower(0);
     }
@@ -75,7 +75,7 @@ public class Arm {
     public void downFromMiddle() throws InterruptedException {
         armMotor.setTargetPosition(-90);
         armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        armMotor.setPower(.09);
+        armMotor.setPower(.11);
         Thread.sleep(1700); // 1.7 seconds
         armMotor.setPower(0);
     }
@@ -83,7 +83,7 @@ public class Arm {
     public void bottomPosition() throws InterruptedException {
         armMotor.setTargetPosition(90);
         armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        armMotor.setPower(.1);
+        armMotor.setPower(.12);
         Thread.sleep(1700); // 1.7 seconds
         armMotor.setPower(0);
     }
@@ -91,7 +91,7 @@ public class Arm {
     public void downFromBottom() throws InterruptedException {
         armMotor.setTargetPosition(-90);
         armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        armMotor.setPower(.05);
+        armMotor.setPower(.12);
         Thread.sleep(1700); // 1.7 seconds
         armMotor.setPower(0);
     }
@@ -99,14 +99,5 @@ public class Arm {
     public void setPower(double pwr){
         armMotor.setPower(pwr);
     }
-    /*
-    public void up(double dx) {
-        spin(dx/5.0);
-    }
-
-    public void down(double dx) {
-        spin(-(dx/10.0));
-    }
-     */
 }
 
