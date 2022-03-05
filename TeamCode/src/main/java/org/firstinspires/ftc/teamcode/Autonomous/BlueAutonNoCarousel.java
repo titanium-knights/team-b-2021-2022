@@ -11,6 +11,8 @@ import org.firstinspires.ftc.teamcode.utils.MecanumDrive;
 public class BlueAutonNoCarousel extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
+        final int DETERMINANT = 400;
+
         // sleep for 10 seconds so the other team can go into the warehouse
         sleep(10000);
 
@@ -36,7 +38,12 @@ public class BlueAutonNoCarousel extends LinearOpMode {
          * coming from turning against an edge (traction/sticks)
          * angles will be changed when we implement CV,
          * otherwise, movement may remain
+         *
+         * OPEN CV:
+         *
          */
+
+
 
         //start - turn to middle
         robot.move(0, 0, .25);
