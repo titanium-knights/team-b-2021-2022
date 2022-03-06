@@ -23,19 +23,11 @@ public class Arm {
         armMotor.setPower(dx);
     }
 
-    /*
-    public void stop() {
-        spin(1/(double) 100);
-    }
-    */
-
     public void stop() {
         armMotor.setPower(0);
     }
 
-//    public void reverse() {
-//        spin(armMotor.getPower() * -1);
-//    }w
+
     public int getEncoderPosition(){
         return armMotor.getCurrentPosition();
     }
@@ -55,7 +47,7 @@ public class Arm {
     }
 
     // right bumper
-    public void upToPosition() throws InterruptedException {
+    public void topPosition() throws InterruptedException {
         armMotor.setTargetPosition(90);
         armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         armMotor.setPower(0.3);
@@ -64,10 +56,42 @@ public class Arm {
     }
 
     // left bumper
-    public void downToPosition() throws InterruptedException {
+    public void downFromTop() throws InterruptedException {
         armMotor.setTargetPosition(-90);
         armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         armMotor.setPower(.19);
+        Thread.sleep(1700); // 1.7 seconds
+        armMotor.setPower(0);
+    }
+
+    public void middlePosition() throws InterruptedException {
+        armMotor.setTargetPosition(90);
+        armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        armMotor.setPower(.2);
+        Thread.sleep(1700); // 1.7 seconds
+        armMotor.setPower(0);
+    }
+
+    public void downFromMiddle() throws InterruptedException {
+        armMotor.setTargetPosition(-90);
+        armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        armMotor.setPower(.09);
+        Thread.sleep(1700); // 1.7 seconds
+        armMotor.setPower(0);
+    }
+
+    public void bottomPosition() throws InterruptedException {
+        armMotor.setTargetPosition(90);
+        armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        armMotor.setPower(.1);
+        Thread.sleep(1700); // 1.7 seconds
+        armMotor.setPower(0);
+    }
+
+    public void downFromBottom() throws InterruptedException {
+        armMotor.setTargetPosition(-90);
+        armMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        armMotor.setPower(.05);
         Thread.sleep(1700); // 1.7 seconds
         armMotor.setPower(0);
     }
