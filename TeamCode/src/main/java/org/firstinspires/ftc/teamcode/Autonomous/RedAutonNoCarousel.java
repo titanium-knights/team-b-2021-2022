@@ -23,7 +23,7 @@ public class RedAutonNoCarousel extends LinearOpMode {
         //lift
         //determine how high arm has to go to reach the top
         Arm arm = new Arm(hardwareMap);
-        arm.upToPosition();
+        arm.topPosition();
         sleep(500);
 
         //approach and drop into top level of the station
@@ -48,7 +48,7 @@ public class RedAutonNoCarousel extends LinearOpMode {
         //move to hub
         robot.move(0, -.25, 0);
         sleep(1000); // 1900
-        arm.downToPosition();
+        arm.downFromTop();
         sleep(2000);
 
 //        sleep(2000);
