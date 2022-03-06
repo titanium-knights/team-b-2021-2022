@@ -20,39 +20,39 @@ import java.util.List;
 @Autonomous(name = "RedAutonNoCarousel")
 public class RedAutonNoCarousel extends LinearOpMode {
     // cv
-    private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
-    private static final String[] LABELS = {
-            "Ball",
-            "Cube",
-            "Duck",
-            "Marker"
-    };
-
-    private static double leftXCoord = -1;
-
-    private static String VUFORIA_KEY = "AekBV2P/////AAABmavTjMKllUm0mQej0m+pKLg+rEi6r41OqZtvQzjSdxX3p6BmCBq0b+VDf+p0bmOsiagf5onjXXOFX2s8LWH7/L8rO/5ITpgkFecW48UX8fcWKjpTf/1p7NaAv1IBD2sKHx1kUcfC6NUDT0RjdmqEIAdGoLG1xnJDiQkHDVsO0Ec0uRFO08a6rDh8QsU4x2cz3cTptLekui2n3WclZvKpL3epvfgsolnOGWmdPT6CNYBmvMhKm8hId8MRCGUBTXQUsv74XVok2iiAiYgrwWQ80uW6xizTtxml17bQwJ8KQ250WXipdxp7IqJaHb1Le7yyv8Nl33XiQ4kORZSjcx46aAxYP3e0IV3OHsos4Ef9SjDi";
-
-    private VuforiaLocalizer vuforia;
-
-    private TFObjectDetector tfod;
+//    private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
+//    private static final String[] LABELS = {
+//            "Ball",
+//            "Cube",
+//            "Duck",
+//            "Marker"
+//    };
+//
+//    private static double leftXCoord = -1;
+//
+//    private static String VUFORIA_KEY = "AekBV2P/////AAABmavTjMKllUm0mQej0m+pKLg+rEi6r41OqZtvQzjSdxX3p6BmCBq0b+VDf+p0bmOsiagf5onjXXOFX2s8LWH7/L8rO/5ITpgkFecW48UX8fcWKjpTf/1p7NaAv1IBD2sKHx1kUcfC6NUDT0RjdmqEIAdGoLG1xnJDiQkHDVsO0Ec0uRFO08a6rDh8QsU4x2cz3cTptLekui2n3WclZvKpL3epvfgsolnOGWmdPT6CNYBmvMhKm8hId8MRCGUBTXQUsv74XVok2iiAiYgrwWQ80uW6xizTtxml17bQwJ8KQ250WXipdxp7IqJaHb1Le7yyv8Nl33XiQ4kORZSjcx46aAxYP3e0IV3OHsos4Ef9SjDi";
+//
+//    private VuforiaLocalizer vuforia;
+//
+//    private TFObjectDetector tfod;
 
     public void runOpMode() throws InterruptedException {
 
         // cv
-        initVuforia();
-        initTfod();
-
+//        initVuforia();
+//        initTfod();
+/*
         if (tfod != null) {
             tfod.activate();
 
             tfod.setZoom(2.5, 16.0/9.0);
         }
-
+*/
         /** Wait for the game to begin */
         telemetry.addData(">", "Press Play to start op mode");
         telemetry.update();
         waitForStart();
-
+/*
         if (opModeIsActive()) {
             int iterations = 0;
             while (opModeIsActive()) {
@@ -80,27 +80,29 @@ public class RedAutonNoCarousel extends LinearOpMode {
 
                         }
                         telemetry.update();
-                        leftXCoord = updatedRecognitions.get(0).getLeft();
-                        break; // breaks when a marker is detected
+                        if (updatedRecognitions.size() > 0) {
+                            leftXCoord = updatedRecognitions.get(0).getLeft();
+                            break; // breaks when a marker is detected
+                        }
                     }
                 }
                 iterations++;
             }
         }
-
+*/
         final int DETERMINANT = 400;
-        boolean top = false; // if something goes wrong set this to true
+        boolean top = true; // if something goes wrong set this to true
         boolean middle = false;
         boolean bottom = false;
 
-        double markerPos = getCoords();
+       /* double markerPos = getCoords();
         if (markerPos > DETERMINANT)
             top = true;
         else if (markerPos < DETERMINANT)
             middle = true;
         else
             bottom = true;
-
+*/
 
         waitForStart();
 
@@ -170,14 +172,14 @@ public class RedAutonNoCarousel extends LinearOpMode {
         robot.move(0,0,0);
     }
 
-    public double getCoords() {
+   /* public double getCoords() {
         // return left x coord
         return leftXCoord;
     }
     /**
      * Update labels based on detection
      */
-    private void updateLabels(Recognition rec) {
+   /* private void updateLabels(Recognition rec) {
         if (rec.getLabel().equals("Duck")) {
             telemetry.addData("Object Detected", "Duck");
         }
@@ -195,11 +197,11 @@ public class RedAutonNoCarousel extends LinearOpMode {
     /**
      * Initialize the Vuforia localization engine.
      */
-    private void initVuforia() {
+ /*   private void initVuforia() {
         /*
          * Configure Vuforia by creating a Parameter object, and passing it to the Vuforia engine.
          */
-        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
+ /*       VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
 
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraName = hardwareMap.get(WebcamName.class, "Webcam 1");
@@ -216,7 +218,7 @@ public class RedAutonNoCarousel extends LinearOpMode {
     /**
      * Initialize the TensorFlow Object Detection engine.
      */
-    private void initTfod() {
+  /*  private void initTfod() {
         int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
                 "tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
@@ -227,4 +229,5 @@ public class RedAutonNoCarousel extends LinearOpMode {
         tfod.loadModelFromAsset(TFOD_MODEL_ASSET, LABELS);
     }
 
+*/
 }
